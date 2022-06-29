@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Message } from './Message';
+
+const existingUser = 'strider';
 
 export const SimpleForm = () => {
 	const [formState, setFormState] = useState({
@@ -15,7 +18,13 @@ export const SimpleForm = () => {
 		});
 	};
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		// console.log('formState changed');
+	}, [formState]);
+
+	useEffect(() => {
+		// console.log('email changed');
+	}, [email]);
 
 	return (
 		<>
@@ -30,6 +39,9 @@ export const SimpleForm = () => {
 				value={username}
 				onChange={onInputChange}
 			/>
+
+			{username === existingUser && <Message />}
+
 			<input
 				type='email'
 				className='form-control mt-2'
