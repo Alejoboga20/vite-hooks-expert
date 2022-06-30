@@ -8,7 +8,7 @@ export const useCounter = (initialCounter = 0) => {
 	};
 
 	const decrement = (value = 1) => {
-		if (counter === 0) return;
+		if (counter === initialCounter) return;
 		setCounter(counter - value);
 	};
 
