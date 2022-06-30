@@ -6,7 +6,7 @@ const existingUser = 'strider';
 const initialForm = { username: '', email: '', password: '' };
 
 export const FormWithCustomHook = () => {
-	const { username, email, password, onInputChange } = useForm(initialForm);
+	const { username, email, password, onInputChange, onResetForm } = useForm(initialForm);
 
 	return (
 		<>
@@ -41,6 +41,10 @@ export const FormWithCustomHook = () => {
 				value={password}
 				onChange={onInputChange}
 			/>
+
+			<button className='btn btn-primary mt-2' onClick={onResetForm}>
+				Reset
+			</button>
 		</>
 	);
 };
