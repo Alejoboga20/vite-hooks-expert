@@ -13,12 +13,21 @@ export const TodoApp = () => {
 	const [todos, dispatchTodo] = useReducer(todoReducer, initialState, stateInitilizer);
 
 	const handleNewTodo = (todo) => {
-		const action = {
+		const addTodoAction = {
 			type: '[TODO] - addTodo',
 			payload: todo,
 		};
 
-		dispatchTodo(action);
+		dispatchTodo(addTodoAction);
+	};
+
+	const handleDeleteTodo = (id) => {
+		const deleteTodoAction = {
+			type: '[TODO] - removeTodo',
+			payload: id,
+		};
+
+		dispatchTodo(deleteTodoAction);
 	};
 
 	useEffect(() => {
@@ -34,7 +43,7 @@ export const TodoApp = () => {
 
 			<div className='row'>
 				<div className='col-7'>
-					<TodoList todos={todos} />
+					<TodoList todos={todos} onDeleteTodo={handleDeleteTodo} />
 				</div>
 
 				<div className='col-5'>
