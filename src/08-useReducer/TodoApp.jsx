@@ -30,6 +30,15 @@ export const TodoApp = () => {
 		dispatchTodo(deleteTodoAction);
 	};
 
+	const handleToggleTodo = (id) => {
+		const toggleTodoAction = {
+			type: '[TODO] - toggleTodo',
+			payload: id,
+		};
+
+		dispatchTodo(toggleTodoAction);
+	};
+
 	useEffect(() => {
 		localStorage.setItem('todos', JSON.stringify(todos));
 	}, [todos]);
@@ -43,7 +52,7 @@ export const TodoApp = () => {
 
 			<div className='row'>
 				<div className='col-7'>
-					<TodoList todos={todos} onDeleteTodo={handleDeleteTodo} />
+					<TodoList todos={todos} onToggleTodo={handleToggleTodo} onDeleteTodo={handleDeleteTodo} />
 				</div>
 
 				<div className='col-5'>
