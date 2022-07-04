@@ -1,9 +1,9 @@
-export const todoReducer = (state, action) => {
+export const todoReducer = (state = [], action) => {
 	switch (action.type) {
 		case '[TODO] - addTodo':
-			return { ...state };
+			return [...state, action.payload];
 
 		default:
-			return { ...state };
+			return [...state];
 	}
 };
